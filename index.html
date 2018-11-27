@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+		<script src="./js/utils.js"></script>
+		<script src="./js/script.js"></script>
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<title>Sokoban</title>
+	</head>
+	<body ng-app="sokobanApp" ng-controller="sokobanController">
+		<div id="mapAndButtons">
+			<div id="map">
+				<ul ng-repeat="i in matrix track by $index">
+					<li>
+						<img ng-src="{{getImgUrl($index, i)}}"/>
+					</li>
+				</ul>
+			</div>
+			<div id="counters">
+				Level: {{level}}
+				<br/>
+				Moves: {{moves}}
+			</div>
+			<div id="buttons">
+				<table>
+					<tr>
+						<td><button class="btnColor1" title="Previous level" ng-click="gotoPreviousLevel()">&#x21d0;</button></td>
+						<td><button class="btnColor2" title="Move up" ng-click="moveUp()">&#x2191;</button></td>
+						<td><button class="btnColor1" title="Following level" ng-click="gotoFollowingLevel()">&#x21d2;</button></td>
+					</tr>
+					<tr>
+						<td><button class="btnColor2" title="Move left" ng-click="moveLeft()">&#x2190;</button></td>
+						<td><button class="btnColor3" title="Reset level" ng-click="resetLevel()">&#x21af;</button></td>
+						<td><button class="btnColor2" title="Move right" ng-click="moveRight()">&#x2192;</button></td>
+					</tr>
+					<tr>
+						<td><button class="btnColor4" title="Undo movement" ng-click="undo()">&#x21bb;</button></td>
+						<td><button class="btnColor2" title="Move down" ng-click="moveDown()">&#x2193;</button></td>
+						<td><button class="btnColor4" title="Redo movement" ng-click="redo()">&#x21ba;</button></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
